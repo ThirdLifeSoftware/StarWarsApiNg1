@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><h1>Star Wars Filmography</h1></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-6">
+                <label for="Characters">Characters:</label>
+                <select class="form-control" id="Characters" name="Characters" ng-options="c.name for c in characters track by c.url" ng-model="selectedCharacterUrl" ng-change="onSelectedCharacterChange(selectedCharacterUrl.url)" >
+                </select>
+            </div>
+        </div>
+        <div class="row" ng-if="hasError != ''">
+            <div class="col-xs-6">
+                <table class="table table-hover">
+                    <tr class="danger"><td>Sorry, looks like there was a problem fetching data for that character.</td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-xs-6">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Release Date</th>
+                    </tr>
+                    </thead>
+                    <tr  class="active" ng-repeat="f in films">
+                        <td>{{f.data.title}}</td>
+                        <td>{{f.data.release_date | date:'fullDate'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
